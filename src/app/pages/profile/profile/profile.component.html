@@ -1,0 +1,66 @@
+<div class="form form-row p-4 form-personal mb-2">
+  <div class="col-6 text-center">
+    <div [style.backgroundImage]="'url('+persona.rutaFotoUrl+')'" class="d-inline-block profile_img">
+
+    </div>
+  </div>
+  <div class="col-6">
+    <p>
+      <strong>Nombres: </strong>
+      {{persona.nombre1}} {{persona.nombre2}}
+    <p>
+    <p>
+      <strong>Apellidos: </strong>
+      {{persona.apellido1}} {{persona.apellido2}}
+    </p>
+    <p>
+      <strong>Apellidos: </strong>
+      {{persona.apellido1}} {{persona.apellido2}}
+    </p>
+    <p>
+      <strong>Identificación: </strong>
+      {{persona.identificacion}}
+    </p>
+    <p>
+      <strong>Fecha Nacimiento: </strong>
+      {{persona.fechaNac | date:'MMMM d, y'}}
+    </p>
+    <p>
+      <strong>Correo Electrónico: </strong>
+      {{persona.email}}
+    </p>
+  </div>
+  <p class="col-md-6">
+    <strong>Dirección: </strong>
+    {{persona.direccion}}
+  </p>
+
+  <p class="col-md-6">
+    <strong>Ciudad: </strong>
+    {{persona.ciudad?.departamento.descripcion}} {{persona.ciudad?.descripcion}}
+  </p>
+
+  <p class="col-md-6">
+    <strong>Celular: </strong>
+    {{persona.celular}}
+  </p>
+
+  <p class="col-md-6">
+    <strong>Ciudad nacimiento: </strong>
+    {{persona.ciudadNac?.departamento.descripcion}} {{persona.ciudadNac?.descripcion}}
+  </p>
+
+  <p class="col-md-6">
+    <strong>Teléfono Fijo: </strong>
+    {{persona.telefonoFijo}}
+  </p>
+
+  <p class="col-md-6">
+    <strong>Ciudad Ubicación: </strong>
+    {{persona.ciudadUbicacion?.departamento.descripcion}} {{persona.ciudadUbicacion?.descripcion}}
+  </p>
+
+  <div class="col-12 text-right">
+    <a class="btn btn-primary" routerLink="/perfil/editar">Editar perfil</a>
+  </div>
+</div>

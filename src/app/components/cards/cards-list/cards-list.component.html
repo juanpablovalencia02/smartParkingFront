@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header card-search">
+      <h6 class="m-0"><strong> {{title}} </strong></h6>
+      <app-custom-search (onSearch)="onSearch($event)"></app-custom-search>
+  </div>
+  <carousel class="botones_nuevos" [interval]="0">
+      <slide *ngFor="let subData of dataSlider">
+          <div class="lista_items card-body col-12 my-3 pt-3 shadow" *ngIf="cardLayout">
+            <ng-container
+              *ngFor="let item of subData"
+              [ngTemplateOutlet]="cardLayout"
+              [ngTemplateOutletContext]="{$implicit: item}"
+            >
+            </ng-container>
+          </div>
+      </slide>
+  </carousel>
+  <ng-content select="[card-footer]"></ng-content>
+</div>

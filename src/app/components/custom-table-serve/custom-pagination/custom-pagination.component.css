@@ -1,0 +1,12 @@
+.page-item:not(.disabled,.active){
+    cursor: pointer;
+}
+
+.page-item *,
+.page-item{
+    user-select: none !important;
+}
+
+.page-item.active:hover{
+    color: white;
+}

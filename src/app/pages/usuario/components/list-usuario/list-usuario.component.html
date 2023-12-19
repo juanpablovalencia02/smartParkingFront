@@ -1,0 +1,81 @@
+<div class="div-principal col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Usuarios Registrados
+      <select #nreg class="form-control col-lg-1" (change)="enviarNumeroRegistros($event.target.value) ">
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+        <option>25</option>
+      </select>
+    </div>
+    <div class="card-body">
+      <div class="div table-container ">
+        <table class="table table-striped table-hover table-responsive">
+          <thead>
+            <tr class="table-info">
+              <th>Código</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+              <th>Asisgnar Rol<router-link></router-link>
+              </th>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: this.numReg, currentPage: pageActual }">
+              <td>{{usuario.id}}</td>
+              <td>{{usuario.user.persona.nombre1}}</td>
+              <td>{{usuario.user.persona.apellido1}}</td>
+              <td>
+                <div *ngIf="usuario.roles.length > 0; else noRol">
+                  <label *ngFor="let rol of usuario.roles">{{rol.name}} {{ usuario.roles.length > 1?',':' ' }}</label>
+                </div>
+                <ng-template #noRol>
+                  No hay roles asignados
+                </ng-template>
+
+              </td>
+              <td>
+                {{ usuario.estado.estado }}
+                <!-- <app-custom-switch [checked]="usuario.estado.estado=='ACTIVO'?true:false" size="5">
+                </app-custom-switch> -->
+              </td>
+              <td>
+                <span *ngIf="usuario.roles.length === 0; else noDelete"
+                  class="badge badge-danger"
+                  style="cursor: pointer;"
+                  [swal]="{ title: 'Desea eliminar',  showCancelButton: true }"
+                  (confirm)="eliminar(usuario.user_id)">
+                  Eliminar
+                </span>
+                <ng-template #noDelete>
+                  <span
+                    class="badge badge-danger"
+                    style="cursor: pointer;"
+                    [swal]="{ title: 'No puede eliminar este usuario'}">
+                    Eliminar
+                  </span>
+                </ng-template>
+              </td>
+              <td>
+                <i style="cursor: pointer;" class="c-icon c-icon-2xl mt-5 mb-2 ml-4 cil-pencil"
+                  (click)="asignar(usuario)"></i>
+              </td>
+            </tr>
+          </tbody>
+          <button type="button" class="btn btn-success mr-10 btn-sm" (click)="agregar()">Agregar</button>
+        </table>
+        <div>
+          <ul>
+            <span>
+              <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+            </span>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.company--container{
+  justify-content: center;
+}
+
+.company{
+  cursor: pointer;
+  max-width: 15rem;
+
+  &--image{
+    height: 5rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+}

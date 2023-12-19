@@ -1,0 +1,13 @@
+<div class="input-group">
+    <input 
+        type="text" 
+        #searchInput 
+        [(ngModel)]="value"
+        class="form-control"
+    >
+    <div class="input-group-append" (click)="clean()">
+        <span class="input-group-text">
+            <i [class]="classIcon"></i>
+        </span>
+    </div>
+</div>

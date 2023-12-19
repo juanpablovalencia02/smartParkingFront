@@ -1,0 +1,43 @@
+<div class="modal-body">
+  <div class="card-header">
+    <strong>Registrar Tipo de Pago</strong>
+  </div>
+  <div class="card-body">
+    <form class="tipoPagoFormulario" [formGroup]="formTipoPago" class="was-validated" novalidate>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label" for="detalleTipoPago">Tipo de Pago</label>
+        <div class="col-md-7">
+          <input
+            type="text"
+            onkeyup="javascript:this.value=this.value.toUpperCase();"
+            placeholder="Ingrese el nombre del tipo de pago"
+            class="form-control is-valid"
+            formControlName='detalleTipoPago'>
+          <div class="valid-feedback" *ngIf="!detalleTipoPagoField.hasError('required')">
+            Valor válido
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          por favor ingresé un valor válido para el nombre del tipo pago
+        </div>
+      </div>
+
+    </form>
+    <div class="card-footer">
+      <button
+        type="submit"
+        class="btn btn-sm btn-primary"
+        (click)="guardarTipoPago()"
+        [disabled]="formTipoPago.invalid">
+        <i class="fa fa-dot-circle-o"></i> Aceptar
+      </button>
+      <button
+        type="reset"
+        class="btn btn-sm btn-danger"
+        (click)="closeModal()">
+        <i class="fa fa-ban"></i>
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>

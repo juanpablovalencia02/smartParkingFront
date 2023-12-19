@@ -1,0 +1,16 @@
+<app-list-proceso
+  [procesos]="procesos"
+  (delete)="eliminarProceso($event)"
+  (update)="actualizarProceso($event)"
+  (create)="createProceso()"></app-list-proceso>
+
+<app-custom-modal
+  title="Gestión Proceso"
+  [(show)]="showModalProceso">
+  <app-add-proceso
+    *ngIf="showModalProceso"
+    [proceso]="proceso"
+    (store)="guardarProceso($event)"
+    (cancel)="reset()">
+  </app-add-proceso>
+</app-custom-modal>

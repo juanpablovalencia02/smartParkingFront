@@ -1,0 +1,89 @@
+<div class="modal-body">
+  <div class="card-header">
+    <strong>Registrar Rol</strong>
+  </div>
+  <div class="card-body">
+    <form class="tipoDocFormulario" [formGroup]="formTipoDoc" class="was-validated" novalidate>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label" for="tituloDocumento">Título Documento</label>
+        <div class="col-md-7">
+          <input
+            type="text"
+            onkeyup="javascript:this.value=this.value.toUpperCase();"
+            placeholder="Ingrese el título del documento"
+            class="form-control is-valid"
+            formControlName='tituloDocumento'>
+          <div class="valid-feedback" *ngIf="!tituloDocumentoField.hasError('required')">
+            Valor válido
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          por favor ingresé un valor válido para el nombre del rol
+        </div>
+      </div>
+      <!-- <div class="form-group row">
+        <label class="col-md-4 col-form-label" for="descripcion">Descripción</label>
+        <div class="col-md-7">
+          <input
+            type="text"
+            onkeyup="javascript:this.value=this.value.toUpperCase();"
+            placeholder="Ingrese una descripción"
+            class="form-control is-valid"
+            formControlName='descripcion'>
+          <div class="valid-feedback" *ngIf="!descripcion.hasError('required')">
+            Valor válido
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          por favor ingresé un valor válido para el nombre del rol
+        </div>
+      </div> -->
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label" for="idProceso">Proceso</label>
+        <div class="col-md-7">
+          <select class="form-control is-valid" formControlName='idProceso'>
+            <option [ngValue]="null">Seleccionar proceso</option>
+            <option *ngFor='let proceso of procesos' [ngValue]="proceso.id">{{proceso.nombreProceso}}</option>
+          </select>
+          <div class="valid-feedback" *ngIf="!idProceso.hasError('required')">
+            Valor válido
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          por favor ingresé un valor válido para la empresa
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label" for="descripcion">Descripción</label>
+        <div class="col-md-7">
+          <textarea type="text" rows="9" onkeyup="javascript:this.value=this.value.toUpperCase();"
+            placeholder="Descripcion..." class="form-control is-valid" formControlName='descripcion'
+            required></textarea>
+          <div class="valid-feedback" *ngIf="!descripcion.hasError('required')">
+            Valor valido
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          por favor ingrese un valor valido para la descripción
+        </div>
+      </div>
+
+    </form>
+    <div class="card-footer">
+      <button
+        type="submit"
+        class="btn btn-sm btn-primary"
+        (click)="guardarTipoDoc()"
+        [disabled]="formTipoDoc.invalid">
+        <i class="fa fa-dot-circle-o"></i> Aceptar
+      </button>
+      <button
+        type="reset"
+        class="btn btn-sm btn-danger"
+        (click)="closeModal()">
+        <i class="fa fa-ban"></i>
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>

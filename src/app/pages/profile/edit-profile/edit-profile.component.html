@@ -1,0 +1,110 @@
+<div class="row p-4 form-personal mb-2">
+    <div class="col-md-6 form-group">
+        <label>Nombres</label>
+        <input type="text" class="form-control" disabled value="{{persona.nombre1}} {{persona.nombre2}}" />
+    </div>
+    <div class="col-md-6 form-group">
+        <label>Apellidos</label>
+        <input type="text" class="form-control" disabled value="{{persona.apellido1}} {{persona.apellido2}}" />
+    </div>
+    <div class="col-md-6 form-group">
+        <label>Identificación</label>
+        <input type="text" class="form-control" disabled value="{{persona.identificacion}}" />
+    </div>
+    <div class="col-md-6 form-group">
+        <label>Fecha Nacimiento</label>
+        <input type="text" class="form-control" disabled value="{{persona.fechaNac | date:'MMMM d, y'}}" />
+    </div>
+
+    <div class="col-md-6 form-group">
+        <label>Correo Electrónico</label>
+        <input type="text" class="form-control" [(ngModel)]="persona.email" />
+    </div>
+
+    <div class="col-md-6 form-group">
+        <label>Dirección</label>
+        <input type="text" class="form-control" [(ngModel)]="persona.direccion" />
+    </div>
+
+    <div class="col-md-6 form-group">
+        <label>Teléfono Fijo</label>
+        <input type="text" class="form-control" [(ngModel)]="persona.telefonoFijo" />
+    </div>
+
+    <div class="col-md-6 form-group">
+        <label>Celular</label>
+        <input type="text" class="form-control" [(ngModel)]="persona.celular" />
+    </div>
+
+    <div class="col-6 form-group">
+        <label>Departamento de nacimiento</label>
+        <select class="form-control" [ngModel]="persona.ciudadNac?.departamento" [compareWith]="compareDepartamento"
+            (ngModelChange)="changeDepatamentoCiudadNacimiento($event)">
+            <option [ngValue]="null">[ Seleccioné un departamento]</option>
+            <option [ngValue]="departamento" *ngFor="let departamento of departamentos">{{departamento.descripcion}}
+            </option>
+        </select>
+    </div>
+    <div class="col-6 form-group">
+        <label>Ciudad de nacimiento</label>
+        <select class="form-control" name="ciudadNac" [(ngModel)]="persona.ciudadNac"
+            [disabled]="ciudadesNacimiento.length<1" [compareWith]="compareCiudad">
+            <option [ngValue]="ciudadInitial">[ Seleccioné una ciudad]</option>
+            <option [ngValue]="ciudadNacimiento" *ngFor="let ciudadNacimiento of ciudadesNacimiento">
+                {{ciudadNacimiento.descripcion}}</option>
+        </select>
+    </div>
+
+    <div class="col-6 form-group">
+        <label>Departamento</label>
+        <select class="form-control" [ngModel]="persona.ciudad?.departamento" [compareWith]="compareDepartamento"
+            (ngModelChange)="changeDepatamentoCiudades($event)">
+            <option [ngValue]="null">[ Seleccioné un departamento]</option>
+            <option [ngValue]="departamento" *ngFor="let departamento of departamentos">{{departamento.descripcion}}
+            </option>
+        </select>
+    </div>
+    <div class="col-6 form-group">
+        <label>Ciudad</label>
+        <select class="form-control" name="ciudad" [(ngModel)]="persona.ciudad" [disabled]="ciudades.length<1"
+            [compareWith]="compareCiudad">
+            <option [ngValue]="ciudadInitial">[ Seleccioné una ciudad]</option>
+            <option [ngValue]="ciudad" *ngFor="let ciudad of ciudades">{{ciudad.descripcion}}</option>
+        </select>
+    </div>
+
+
+    <div class="col-6 form-group">
+        <label>Departamento Actual</label>
+        <select class="form-control" [ngModel]="persona.ciudadUbicacion?.departamento"
+            [compareWith]="compareDepartamento" (ngModelChange)="changeDepatamentoCiudadUbicacion($event)">
+            <option [ngValue]="null">[ Seleccioné un departamento]</option>
+            <option [ngValue]="departamento" *ngFor="let departamento of departamentos">{{departamento.descripcion}}
+            </option>
+        </select>
+    </div>
+    <div class="col-6 form-group">
+        <label>Ciudad Actual</label>
+        <select class="form-control" name="ciudad" [(ngModel)]="persona.ciudadUbicacion"
+            [disabled]="ciudadesUbicacion.length<1" [compareWith]="compareCiudad">
+            <option [ngValue]="ciudadInitial">[ Seleccioné una ciudad]</option>
+            <option [ngValue]="ciudad" *ngFor="let ciudad of ciudadesUbicacion">{{ciudad.descripcion}}</option>
+        </select>
+    </div>
+
+    <div class="col-6 form-group">
+        <label>Foto de perfil</label>
+        <div class="input-group mb-3">
+            <div class="custom-file">
+                <input accept="image/*" type="file" id="fotoPerfil" aria-describedby="fotoPerfilAddon01" class="custom-file-input"
+                    (change)="onFileChange($event.target.files)" />
+                <label class="custom-file-label" for="fotoPerfil">{{nameFileFotoPerfil}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 text-right">
+        <a class="btn btn-danger" routerLink="/perfil">Cancelar</a>
+        <a class="btn btn-success text-white" (click)="updateProfile()">Actualizar</a>
+    </div>
+</div>

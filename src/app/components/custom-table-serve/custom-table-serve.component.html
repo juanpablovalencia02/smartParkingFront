@@ -1,0 +1,53 @@
+<div class="card" *ngIf="data && data.data">
+  <div class="card-header">
+    <p class="title">
+      <i class="fa fa-align-justify"></i> {{title}}
+    </p>
+    <select [(ngModel)]="page.itemsPerPage" (change)="changeItemsPerPage()" class="form-control col-lg-2">
+      <option>5</option>
+      <option>10</option>
+      <option>15</option>
+      <option>20</option>
+      <option>25</option>
+    </select>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <td class="table_title" *ngFor="let header of tableHeader">
+            <div class="search pb-2" *ngIf="header.filter && header.filter.type">
+              <ng-container *ngIf="header.filter && header.filter.type==='input'; else elseTemplate">
+                <input (keyup)="updateFilter()" class="form-control" type="text"
+                  [(ngModel)]="header.filter.value">
+              </ng-container>
+              <ng-template #elseTemplate>
+                <select (change)="updateFilter()" class="form-control"
+                  [(ngModel)]="header.filter.value">
+                  <option [ngValue]="null">{{getCleanText(header.filter)||'Sin filtro'}}</option>
+                  <option *ngFor="let item of getItems(header.filter)"
+                    [ngValue]="item&&getValue(header.filter, item)">
+                    {{getTitle(header.filter, item)}}
+                  </option>
+                </select>
+              </ng-template>
+            </div>
+            {{header.title}}
+          </td>
+        </tr>
+        <ng-content select="[table-filter]"></ng-content>
+        <ng-content select="[table-header]"></ng-content>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of data.data"
+          [ngTemplateOutlet]="customTableBody" [ngTemplateOutletContext]="{$implicit: item}">
+        </ng-container>
+      </tbody>
+    </table>
+    <div>
+      <app-custom-pagination (onChangePage)="changePage($event)" [current]="data.current_page" [max]="data.last_page">
+      </app-custom-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<app-list-medio-pago
+  [medioPagos]="medioPagos"
+  (delete)="eliminarMedioPago($event)"
+  (update)="actualizarMedioPago($event)"
+  (create)="createMedioPago()"></app-list-medio-pago>
+
+<app-custom-modal
+  title="Gestión Medio Pago"
+  [(show)]="showModalMedioPago">
+  <app-add-medio-pago
+    *ngIf="showModalMedioPago"
+    [medioPago]="medioPago"
+    (store)="guardarMedioPago($event)"
+    (cancel)="reset()">
+  </app-add-medio-pago>
+</app-custom-modal>

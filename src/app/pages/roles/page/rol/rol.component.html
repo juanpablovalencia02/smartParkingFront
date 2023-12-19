@@ -1,0 +1,19 @@
+<app-roles-list
+  [roles]="roles"
+  (delete)="eliminarRol($event)"
+  (update)="actualizarRol($event)"
+  (create)="createRol()"
+  ></app-roles-list>
+
+<app-custom-modal
+  title="Gestión Rol"
+  [(show)]="showModalRol">
+  <app-roles
+    *ngIf="showModalRol"
+    [rol]="rol"
+    (store)="guardarRol($event)"
+    (cancel)="reset()"
+    >
+  </app-roles>
+</app-custom-modal>
+

@@ -1,0 +1,29 @@
+<app-list-usuario
+  [usuarios]="usuarios"
+  (delete)="eliminarUsuarios($event)"
+  (update)="actualizarUsuarios($event)"
+  (create)="createUsuarios()"
+  (asignation)="asignarRol($event)"></app-list-usuario>
+
+<app-custom-modal
+  title="Gestión Usuario"
+  [(show)]="showModalUsuario">
+  <app-add-usuario
+    *ngIf="showModalUsuario"
+    [usuario]="usuario"
+    (store)="guardarUsuarios($event)"
+    (cancel)="reset()">
+  </app-add-usuario>
+</app-custom-modal>
+
+<app-custom-modal
+  title="Asignar Rol"
+  [(show)]="showModalAsignacion">
+  <app-asignar-rol
+    *ngIf="showModalAsignacion"
+    [usuario]="usuario"
+    [roles]="roles"
+    (asignation)="guardarAsignacion($event)"
+    (cancel)="reset()">
+  </app-asignar-rol>
+</app-custom-modal>

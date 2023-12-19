@@ -1,0 +1,37 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2020",
+    "types": [],
+    "paths": {
+      "@angular/*": [
+        "../node_modules/@angular/*"
+      ],
+      "@share/*": ["../src/app/shared/*" ],
+      "@utils/*": ["../src/app/utils/*"],
+      "@aut/*": ["../src/app/auth/*"],
+      "@services/*": ["../src/app/services/*"],
+      "@components/*": ["../src/app/components/*"],
+      "@models/*": ["../src/app/models/*"],
+      "@bootstrap/*": ["../src/app/bootstrap/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true,
+    "importHelpers": true
+  },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "**/*.d.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/test.ts",
+    "src/environments/environment.prod.ts"
+  ]
+}

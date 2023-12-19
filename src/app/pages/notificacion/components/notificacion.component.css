@@ -1,0 +1,12 @@
+tr.estadoLeido{
+
+  background-color: rgba(0, 0, 0, 0.075);
+}
+tr.estadoNoLeido{
+  background-color: #ff000033 !important;
+}
+
+.mensaje-modal{
+width: 19rem;
+    text-align: justify;
+}

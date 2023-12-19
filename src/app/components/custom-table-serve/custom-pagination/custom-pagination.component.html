@@ -1,0 +1,30 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{'disabled': isFirst||!isPageValid(current-1)}">
+      <a class="page-link" (click)="changePage(current-1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo; Anterior</span>
+      </a>
+    </li>
+
+    <li class="page-item" *ngIf="isPageValid(1)" [ngClass]="{'active': isActive(1)}">
+      <a class="page-link" (click)="changePage(1)">{{1}}</a>
+    </li>
+
+    <ng-container *ngFor="let pagina of pages">
+      <li class="page-item" [ngClass]="{'active': isActive(pagina)}">
+        <a class="page-link" (click)="changePage(pagina)">{{pagina}}</a>
+      </li>
+    </ng-container>
+
+
+    <li class="page-item" *ngIf="isPageValid(max) && max !== 1" [ngClass]="{'active': isActive(max)}">
+      <a class="page-link" (click)="changePage(max)">{{max}}</a>
+    </li>
+
+    <li class="page-item" [ngClass]="{'disabled': isLast||!isPageValid(current+1)}">
+      <a class="page-link" (click)="changePage(current+1)" aria-label="Next">
+        <span aria-hidden="true">Siguiente &raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

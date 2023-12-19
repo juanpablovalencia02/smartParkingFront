@@ -1,0 +1,22 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row pt-3">
+        <div class="row col-md-8 mx-auto">
+          <div
+            class="col-md-4"
+            *ngFor="let activationCompanyUser of activationCompanyUsers">
+            <div class="card company mx-1" (click)="selectCompany(activationCompanyUser)">
+              <div class="card-header">{{getCompanyName(activationCompanyUser)}}</div>
+              <div class="card-body p-2">
+                <div class="company--image" [style]="getCompanyLogoCSS(activationCompanyUser)">
+                </div>
+              </div>
+              <div class="card-footer">{{getRole(activationCompanyUser)}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

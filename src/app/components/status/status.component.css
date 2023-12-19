@@ -1,0 +1,10 @@
+.text-orange {
+  color: var(--orange);
+}
+
+.status{
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1.1em;
+  margin-bottom: 0;
+}

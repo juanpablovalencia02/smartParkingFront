@@ -1,0 +1,13 @@
+.form-personal {
+  background-color: white;
+}
+
+.profile_img{
+  padding-top: 45%;
+  padding-right: 45%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background-position: center;
+}

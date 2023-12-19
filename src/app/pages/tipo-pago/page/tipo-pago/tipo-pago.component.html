@@ -1,0 +1,16 @@
+<app-list-tipo-pago
+  [tipoPagos]="tipoPagos"
+  (delete)="eliminarTipoPago($event)"
+  (update)="actualizarTipoPago($event)"
+  (create)="createTipoPago()"></app-list-tipo-pago>
+
+<app-custom-modal
+  title="Gestión Tipo Pago"
+  [(show)]="showModalTipoPago">
+  <app-add-tipo-pago
+    *ngIf="showModalTipoPago"
+    [tipoPago]="tipoPago"
+    (store)="guardarTipoPago($event)"
+    (cancel)="reset()">
+  </app-add-tipo-pago>
+</app-custom-modal>
